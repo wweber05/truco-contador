@@ -1,60 +1,73 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 export default function App() {
 
-  const[contador, setContador] = useState(0);
+  const [pontosNos, setPontosNos] = useState(0);
+  const [pontosEles, setPontosEles] = useState(0);
 
-  function diminuirContagem(){
-    if (contador > 0){
-    setContador(contador - 1);
-    }
-    
+ function diminuirNos() {
+    if (pontosNos > 0) setPontosNos(pontosNos - 1);
+  }
+
+  function diminuirEles() {
+    if (pontosEles > 0) setPontosEles(pontosEles - 1);
   }
 
 return (
     <View style={styles.container}>
       <Text style={styles.title}>MARCADOR</Text>
+
+    
+      <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginTop: 50 }}>
+        
+        
+        <View style={{ alignItems: 'center' }}>
+          <Text style={styles.teamLabel}>Nós</Text>
+          <Text style={styles.text}>{pontosNos}</Text>
+          
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity 
+              onPress={() => setPontosNos(pontosNos + 1)}
+              style={[styles.button, { backgroundColor: '#006442' }]}
+            >
+              <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              onPress={diminuirNos}
+              style={[styles.button, { backgroundColor: '#8B0021' }]}
+            >
+              <Text style={styles.buttonText}>-</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
       
-      <View>
-      <Text style= {styles.text}>{contador}</Text>
+        <View style={{ alignItems: 'center' }}>
+          <Text style={styles.teamLabel}>Eles</Text>
+          <Text style={styles.text}>{pontosEles}</Text>
+          
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity 
+              onPress={() => setPontosEles(pontosEles + 1)}
+              style={[styles.button, { backgroundColor: '#006442' }]}
+            >
+              <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              onPress={diminuirEles}
+              style={[styles.button, { backgroundColor: '#8B0021' }]}
+            >
+              <Text style={styles.buttonText}>-</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
       </View>
-      
-      <View style={{ flexDirection: 'row', marginTop: 200, justifyContent: 'center', gap: 20 }}>
-  
-  
-  <TouchableOpacity 
-    onPress={() => setContador(contador + 1)}
-    style={{
-      backgroundColor: '#006442', 
-      width: 80,
-      height: 45,
-      borderRadius: 12,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>+</Text>
-  </TouchableOpacity>
-
-  
-  <TouchableOpacity 
-    onPress={diminuirContagem}
-    style={{
-      backgroundColor: '#8B0021', 
-      width: 80,
-      height: 45,
-      borderRadius: 12,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>-</Text>
-  </TouchableOpacity>
-
-</View>
 
       <StatusBar style="auto" />
     </View>
@@ -64,18 +77,41 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff8f',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   title: {
-    fontFamily: 'Arial',
-    fontSize: 20
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
-
+  teamLabel: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#555',
+  },
   text: {
-    fontSize: 100
+    fontSize: 80, // Diminuí um pouco para caber os dois na tela
+    fontWeight: 'bold',
   },
+  buttonContainer: {
+    flexDirection: 'row', 
+    gap: 10, 
+    marginTop: 20
+  },
+  button: {
+    width: 70,
+    height: 45,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white', 
+    fontSize: 24, 
+    fontWeight: 'bold'
+  }
+});
 
-})
+  
