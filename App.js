@@ -42,6 +42,21 @@ return (
             >
               <Text style={styles.buttonText}>-</Text>
             </TouchableOpacity>
+            </View>
+            
+            <View style={{ marginTop: 10, gap: 10 }}>
+            <TouchableOpacity onPress={() => setPontosNos(pontosNos + 3)} style={[styles.button, { backgroundColor: '#5b77bc', width: 150 }]}>
+              <Text style={styles.buttonText}>Truco</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setPontosNos(pontosNos + 6)} style={[styles.button, { backgroundColor: '#ddd343', width: 150 }]}>
+              <Text style={styles.buttonText}>Seis</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setPontosNos(pontosNos + 9)} style={[styles.button, { backgroundColor: '#011d32', width: 150 }]}>
+              <Text style={styles.buttonText}>Nove</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setPontosNos(pontosNos + 12)} style={[styles.button, { backgroundColor: '#0a3901', width: 150 }]}>
+              <Text style={styles.buttonText}>Doze</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -63,6 +78,22 @@ return (
               style={[styles.button, { backgroundColor: '#8B0021' }]}
             >
               <Text style={styles.buttonText}>-</Text>
+            </TouchableOpacity>
+          </View>
+            
+          
+        <View style={{ marginTop: 10, gap: 10 }}>
+            <TouchableOpacity onPress={() => setPontosEles(pontosEles + 3)} style={[styles.button, { backgroundColor: '#5b77bc', width: 150 }]}>
+              <Text style={styles.buttonText}>Truco</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setPontosEles(pontosEles + 6)} style={[styles.button, { backgroundColor: '#ddd343', width: 150 }]}>
+              <Text style={styles.buttonText}>Seis</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setPontosEles(pontosEles + 9)} style={[styles.button, { backgroundColor: '#011d32', width: 150 }]}>
+              <Text style={styles.buttonText}>Nove</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setPontosEles(pontosEles + 12)} style={[styles.button, { backgroundColor: '#0a3901', width: 150 }]}>
+              <Text style={styles.buttonText}>Doze</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -92,7 +123,7 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   text: {
-    fontSize: 80, // Diminuí um pouco para caber os dois na tela
+    fontSize: 80,
     fontWeight: 'bold',
   },
   buttonContainer: {
