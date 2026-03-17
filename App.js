@@ -1,10 +1,61 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 
 export default function App() {
-  return (
+
+  const[contador, setContador] = useState(0);
+
+  function diminuirContagem(){
+    if (contador > 0){
+    setContador(contador - 1);
+    }
+    
+  }
+
+return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={styles.title}>MARCADOR</Text>
+      
+      <View>
+      <Text style= {styles.text}>{contador}</Text>
+      </View>
+      
+      <View style={{ flexDirection: 'row', marginTop: 200, justifyContent: 'center', gap: 20 }}>
+  
+  
+  <TouchableOpacity 
+    onPress={() => setContador(contador + 1)}
+    style={{
+      backgroundColor: '#006442', 
+      width: 80,
+      height: 45,
+      borderRadius: 12,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>+</Text>
+  </TouchableOpacity>
+
+  
+  <TouchableOpacity 
+    onPress={diminuirContagem}
+    style={{
+      backgroundColor: '#8B0021', 
+      width: 80,
+      height: 45,
+      borderRadius: 12,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>-</Text>
+  </TouchableOpacity>
+
+</View>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +64,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff8f',
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+
+  title: {
+    fontFamily: 'Arial',
+    fontSize: 20
+  },
+
+  text: {
+    fontSize: 100
+  },
+
+})
